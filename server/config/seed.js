@@ -32,6 +32,7 @@ Thing.find({}).remove(function() {
 
 User.find({}).remove(function() {
   User.create({
+    _id: '5577385930abc2aa4caa40ec',
     provider: 'local',
     name: 'Test User',
     email: 'test@test.com',

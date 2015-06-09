@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Board = require('./board.model');
+var User = require('../user/user.model')
 
 // Get list of boards
 exports.index = function(req, res) {
@@ -20,12 +21,42 @@ exports.show = function(req, res) {
   });
 };
 
+
+exports.getByUser = function (req, res) {
+  User.findById(req.params.userId)
+  .populate('boards')
+  .exec()
+  .then(function(user){
+    res.json(200, user.boards)
+  })
+  .then(null, function(err) {
+    if(err) { return handleError(res, err); }
+  })
+}
+
+
 // Creates a new board in the DB.
 exports.create = function(req, res) {
-  Board.create(req.body, function(err, board) {
-    if(err) { return handleError(res, err); }
-    return res.json(201, board);
-  });
+  var newBoard;
+  req.body.authors = [req.user._id];
+  Board.create(req.body)
+  .then(function(board){
+    newBoard = board;
+    console.log(newBoard);
+    return User.findById(req.user._id).exec()
+  })
+  .then(function(user){
+    console.log("got into user thing", user);
+    user.boards.push(newBoard._id)
+    return user.save(function(err, user){
+      console.log("saved the user", user);
+      res.json(200, newBoard);
+    })
+  })
+  .then(null, function(err){
+     if(err) { return handleError(res, err); }
+  })
+
 };
 
 // Updates an existing board in the DB.
