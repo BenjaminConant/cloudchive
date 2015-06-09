@@ -5,7 +5,7 @@ angular.module('cloudchiveApp')
    
     return {
       add: function (url, boardId) {
-        return $http.post('api/links', {url: url, boardId: boardId});
+        return $http.post('api/links/', {url: url, boardId: boardId});
       }
     };
   });

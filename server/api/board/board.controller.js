@@ -24,7 +24,7 @@ exports.show = function(req, res) {
 
 exports.getByUser = function (req, res) {
   User.findById(req.params.userId)
-  .populate('boards')
+  .deepPopulate('boards.links.comments.author boards.comments boards.authors')
   .exec()
   .then(function(user){
     res.json(200, user.boards)
@@ -42,14 +42,11 @@ exports.create = function(req, res) {
   Board.create(req.body)
   .then(function(board){
     newBoard = board;
-    console.log(newBoard);
     return User.findById(req.user._id).exec()
   })
   .then(function(user){
-    console.log("got into user thing", user);
     user.boards.push(newBoard._id)
     return user.save(function(err, user){
-      console.log("saved the user", user);
       res.json(200, newBoard);
     })
   })

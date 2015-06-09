@@ -9,8 +9,10 @@ angular.module('cloudchiveApp')
 
   
 
-  	$scope.addLink = function () {
-
+  	$scope.addLink = function (url) {
+      Link.add(url, $scope.board._id).then(function(link){
+        $scope.board.links.push(link.data);
+      })
   	}
 
     $scope.createBoard = function() {

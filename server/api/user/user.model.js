@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
+var deepPopulate = require('mongoose-deep-populate');
+
 
 var UserSchema = new Schema({
   name: String,
@@ -145,5 +147,7 @@ UserSchema.methods = {
     return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
   }
 };
+
+UserSchema.plugin(deepPopulate);
 
 module.exports = mongoose.model('User', UserSchema);
