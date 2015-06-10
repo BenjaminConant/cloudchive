@@ -3,6 +3,8 @@
 angular.module('cloudchiveApp')
   .controller('UserCtrl', function ($scope, $stateParams, Auth, Link, Board, $window) {
   	
+    $scope.newUrl = {};
+
     Board.getByUser($stateParams.id).then(function(boards){
       $scope.board = boards.data[0];
       console.log($scope.board);
@@ -10,9 +12,10 @@ angular.module('cloudchiveApp')
 
   
 
-  	$scope.addLink = function (url) {
-      Link.add(url, $scope.board._id).then(function(link){
+  	$scope.addLink = function () {
+      Link.add($scope.newUrl.url, $scope.board._id).then(function(link){
         $scope.board.links.push(link.data);
+        $scope.newUrl.url = "" ;
       })
   	}
 
