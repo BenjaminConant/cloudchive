@@ -31,6 +31,13 @@
 				</div>
 				<div class="v-space-10"></div>
 				<div class="row">	
+					<div masonry>
+					    <div class="masonry-brick" ng-repeat="brick in bricks">
+					        <img ng-src="{{ brick.src }}" alt="A masonry brick">
+					    </div>
+					</div>
+
+
 					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 card-col">
 						<div class="container-fluid">
 							<div class="row">
