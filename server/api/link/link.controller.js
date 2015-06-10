@@ -50,9 +50,11 @@ exports.create = function(req, res) {
         if (body.provider_url) {req.body.title = body.provider_url; }
 
         var smallColor = 750;
-        var firstColor = {color:[250,250,250]}
+        var firstColor = {color:[0,0,0]}
         req.body.faviconColors.forEach(function(elem){
-          if ((elem.color[0] + elem.color[1] +elem.color[2]) <= smallColor) {
+          var color = elem.color[0] + elem.color[1] +elem.color[2];
+          if (color <= smallColor && color > 10) {
+            smallColor = elem.color[0] + elem.color[1] +elem.color[2];
             firstColor = elem;
           }
         });

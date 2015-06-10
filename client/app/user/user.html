@@ -34,14 +34,20 @@
 					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 card-col">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="link">
+								<div class="link" style="border: 1px solid rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 link-header no-padding">
-										<h4 ng-click="openLink(link.url)" style="color: white; background-color: rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">{{link.providerName}}</h4>
+										<div class="link-top-bar">
+											<h4 ng-click="openLink(link.url)" style="color: white; background-color: rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">
+											<img class="link-favicon" style="" ng-src="{{link.favicon}}" alt="">
+											{{link.providerName}}
+											</h4>
+										</div>
+										
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
 										<div class="text-center image-container">
-											<img class="link-image" ng-if="link.favicon" ng-src="{{link.favicon}}">
-											<img class="link-image" ng-if="link.images.length" ng-src="{{link.images[0].url}}">
+											<img class="link-image" ng-if="!link.images.length"  ng-src="{{link.favicon}}">
+											<img class="link-image" ng-if="link.images.length" ng-repeat="image in link.images" ng-src="{{image.url}}">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12no-padding">

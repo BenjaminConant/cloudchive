@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('cloudchiveApp')
-  .controller('UserCtrl', function ($scope, $stateParams, Auth, Link, Board, $window) {
+  .controller('UserCtrl', function ($scope, $stateParams, Auth, Link, Board, $window, $interval) {
   	
     $scope.newUrl = {};
 
@@ -13,8 +13,25 @@ angular.module('cloudchiveApp')
   
 
   	$scope.addLink = function () {
-      Link.add($scope.newUrl.url, $scope.board._id).then(function(link){
+      var url = $scope.newUrl.url
+      var counter = 0;
+      $scope.newUrl.url = "fetching your link "
+      var stop = $interval(function() {
+            if (counter < 2) {
+              $scope.newUrl.url += '.'
+              counter++; 
+            } else {
+               $scope.newUrl.url = "fetching your link ";
+               counter = 0;
+            }
+          }, 200);
+
+
+      
+      Link.add(url, $scope.board._id).then(function(link){
         $scope.board.links.push(link.data);
+        $interval.cancel(stop);
+        stop = undefined;
         $scope.newUrl.url = "" ;
       })
   	}
@@ -28,5 +45,8 @@ angular.module('cloudchiveApp')
     $scope.openLink = function (url) {
       $window.open(url);
     }
+
+    
+ 
 
   });
