@@ -10,8 +10,6 @@ angular.module('cloudchiveApp')
       console.log($scope.board);
     })
 
-  
-
   	$scope.addLink = function () {
       var url = $scope.newUrl.url
       var counter = 0;
