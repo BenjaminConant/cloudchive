@@ -5,13 +5,21 @@ var mongoose = require('mongoose'),
 
 var LinkSchema = new Schema({
   url: String,
-  providerUrl: String,
-  favicon: String,
   title: String,
+  providerUrl: String,
+  providerDisplay: String,
+  providerName: String,
+  favicon: String,
+  faviconColors: Array,
   description: String,
+  lead: String, 
+  content: String,
   type: String,
-  thumbnails: [String],
-  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+  keywords: Array,
+  entities: Array,
+  images: Array,
+  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
+  board: [{type: Schema.Types.ObjectId, ref: 'Board'}]
 });
 
 module.exports = mongoose.model('Link', LinkSchema);

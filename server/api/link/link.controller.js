@@ -27,31 +27,50 @@ exports.show = function(req, res) {
 
 // Creates a new link in the DB.
 exports.create = function(req, res) {
-  console.log(process.env.EMBEDLY_API_KEY);
-  request('https://api.embed.ly/1/extract?key=af2aa0f67757494eafa66fd08467f10f&url=http%3A%2F%2Fvimeo.com%2F18150336', function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log(body) // Show the HTML for the Google homepage.
-    }
-  })
 
-  var newLink;
-  Link.create({url: req.body.url})
-  .then(function(link){
-    newLink = link;
-    return newLink; 
-  })
-  .then(function(newLink){
-    return Board.findById(req.body.boardId).exec();
-  })
-  .then(function(board){
-    board.links.push(newLink._id);
-    return board.save()
-  })
-  .then(function(board){
-    res.json(200, newLink);
-  })
-  .then(null, function(err){
-    if(err) { return handleError(res, err); }
+  request('https://api.embed.ly/1/extract?key='+process.env.EMBEDLY_API_KEY+'&url=' + encodeURIComponent(req.body.url), function (err, response, body) {
+    if (err) { return handleError(res, err); }
+    if (!err && response.statusCode == 200) {
+      console.log(JSON.parse(body)) 
+      body = JSON.parse(body)
+      if (body) {
+        if (body.title) {req.body.title = body.title; }
+        if (body.provider_url) {req.body.providerUrl = body.provider_url; }
+        if (body.provider_display) {req.body.providerDisplay = body.provider_display; }
+        if (body.provider_name) {req.body.providerName = body.provider_name; }
+        if (body.favicon_url) {req.body.favicon = body.favicon_url; }
+        if (body.favicon_colors) {req.body.faviconColors = body.favicon_colors; }
+        if (body.description) {req.body.description = body.description; }
+        if (body.lead) {req.body.lead = body.lead; }
+        if (body.content) {req.body.content = body.content; }
+        if (body.type) {req.body.type = body.type; }
+        if (body.keywords) {req.body.keywords = body.keywords; }
+        if (body.entities) {req.body.entities = body.entities; }
+        if (body.images) {req.body.images = body.images; }
+        if (body.provider_url) {req.body.title = body.provider_url; }
+      }
+    }
+    
+    var newLink;
+    Link.create(req.body)
+    .then(function(link){
+      newLink = link;
+      return newLink; 
+    })
+    .then(function(newLink){
+      return Board.findById(req.body.boardId).exec();
+    })
+    .then(function(board){
+      board.links.push(newLink._id);
+      return board.save()
+    })
+    .then(function(board){
+      res.json(200, newLink);
+    })
+    .then(null, function(err){
+      if(err) { return handleError(res, err); }
+    })
+
   })
 
 };

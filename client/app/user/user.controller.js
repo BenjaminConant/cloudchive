@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('cloudchiveApp')
-  .controller('UserCtrl', function ($scope, $stateParams, Auth, Link, Board) {
+  .controller('UserCtrl', function ($scope, $stateParams, Auth, Link, Board, $window) {
   	
     Board.getByUser($stateParams.id).then(function(boards){
       $scope.board = boards.data[0];
+      console.log($scope.board);
     })
 
   
@@ -19,6 +20,10 @@ angular.module('cloudchiveApp')
       Board.create($stateParams.id, {}).then(function(board) {
         $scope.board = board.data;
       })
+    }
+
+    $scope.openLink = function (url) {
+      $window.open(url);
     }
 
   });

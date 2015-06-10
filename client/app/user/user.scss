@@ -1,7 +1,26 @@
-.left-nav, .board, .card-p {
+.left-nav, .board, .card-p, .link {
 	border: 1px solid black;
 }
 
 .board {
+	.link {
+		cursor: pointer;
+		overflow: auto;
+		.link-header {
+			h4 {
+				margin-top: 0;
+				margin-bottom: 0;
+				padding: 10px;
 
+			}
+		}
+		.link-image {
+			max-width: 100%;
+		}
+		.no-padding {
+			padding: 0 !important;
+		}
+	}
 }
+
+
