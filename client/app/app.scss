@@ -15,6 +15,10 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding: 0.2em 0;
 }
 
+.v-space-10 {
+	height: 10px;
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';

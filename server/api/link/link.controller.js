@@ -48,6 +48,15 @@ exports.create = function(req, res) {
         if (body.entities) {req.body.entities = body.entities; }
         if (body.images) {req.body.images = body.images; }
         if (body.provider_url) {req.body.title = body.provider_url; }
+
+        var smallColor = 750;
+        var firstColor = {color:[250,250,250]}
+        req.body.faviconColors.forEach(function(elem){
+          if ((elem.color[0] + elem.color[1] +elem.color[2]) <= smallColor) {
+            firstColor = elem;
+          }
+        });
+        req.body.faviconColors.unshift(firstColor);
       }
     }
     

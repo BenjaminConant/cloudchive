@@ -23,32 +23,29 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<h1 class="text-center">{{board.title}}</h1>
 					</div>
-				</div>
-				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col lg-12 text-center">
 						<form ng-submit="addLink()">
 							<input type="text" placeholder="paste link here" ng-model="newUrl.url">
 						</form>
 					</div>
-				</div>	
-				<div class="row">
-					
+				</div>
+				<div class="v-space-10"></div>
+				<div class="row">	
 					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 card-col">
 						<div class="container-fluid">
-							<div ng-click="openLink(link.url)" class="row">
+							<div class="row">
 								<div class="link">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 link-header no-padding">
-										<h4 style="color: white; background-color: rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">{{link.providerName}}</h4>
+										<h4 ng-click="openLink(link.url)" style="color: white; background-color: rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">{{link.providerName}}</h4>
 									</div>
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center no-padding">
-										<img class="link-image" ng-if="link.images.length" ng-src="{{link.images[0].url}}">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+										<div class="text-center image-container">
+											<img class="link-image" ng-if="link.favicon" ng-src="{{link.favicon}}">
+											<img class="link-image" ng-if="link.images.length" ng-src="{{link.images[0].url}}">
+										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12no-padding">
 										<p class="lead">{{link.description}}</p>
-									</div>
-
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
-										<p class="text-center card-p">{{link.url}}</p>
 									</div>
 								</div>
 							</div>
