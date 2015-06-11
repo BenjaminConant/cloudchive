@@ -2,7 +2,8 @@
 
 var _ = require('lodash');
 var Board = require('./board.model');
-var User = require('../user/user.model')
+var Helpers = require('../../components/helpers/helpers');
+var User = require('../user/user.model');
 
 // Get list of boards
 exports.index = function(req, res) {
@@ -59,10 +60,14 @@ exports.create = function(req, res) {
 // Updates an existing board in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
+  
+  req.body = Helpers.clean(req.body);
+
   Board.findById(req.params.id, function (err, board) {
     if (err) { return handleError(res, err); }
     if(!board) { return res.send(404); }
     var updated = _.merge(board, req.body);
+    console.log(updated);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, board);
@@ -83,5 +88,6 @@ exports.destroy = function(req, res) {
 };
 
 function handleError(res, err) {
+  console.log(err);
   return res.send(500, err);
 }

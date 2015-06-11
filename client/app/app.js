@@ -6,6 +6,7 @@ angular.module('cloudchiveApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
+  'xeditable'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

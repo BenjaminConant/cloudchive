@@ -44,6 +44,12 @@ angular.module('cloudchiveApp')
       $window.open(url);
     }
 
+    $scope.updateBoard = function () {
+      Board.update($scope.board).then(function(board){
+        console.log(board);
+      })
+    }
+
     
  
 
