@@ -6,6 +6,9 @@ angular.module('cloudchiveApp')
     return {
       add: function (url, boardId) {
         return $http.post('api/links/', {url: url, boardId: boardId});
+      },
+      update: function (link) {
+        return $http.put('/api/links/' + link._id, link);
       }
     };
   });

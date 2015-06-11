@@ -22,7 +22,7 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<h1 class="text-center title"><a href="#" editable-text="board.title" buttons="no" onaftersave="updateBoard()">{{ board.title || "empty" }}</a></h1>
-						<h2 class="text-center lead description"><a href="#" editable-textarea="board.description" buttons="no" submit-on-enter="true" onaftersave="updateBoard()"><em>{{ board.description || "empty" }}</em></a></h2>
+						<h2 class="text-center lead board-description"><a href="#" editable-textarea="board.description" buttons="no" submit-on-enter="true" onaftersave="updateBoard()"><em>{{ board.description || "empty" }}</em></a></h2>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col lg-12 text-center">
 						<form ng-submit="addLink()">
@@ -59,7 +59,7 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12no-padding">
-										<p class="lead">{{link.description}}</p>
+										<p class="lead link-description"><a href="#" editable-textarea="link.description" buttons="no" submit-on-enter="true" onaftersave="updateLink(link)">{{ link.description || "empty" }}</a></p>
 									</div>
 								</div>
 							</div>

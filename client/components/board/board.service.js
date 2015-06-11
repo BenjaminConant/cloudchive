@@ -12,7 +12,6 @@ angular.module('cloudchiveApp')
       	return $http.get('/api/boards/getbyuser/' + userId);
       }, 
       update: function (board) {
-        console.log("before sending", board);
         return $http.put('/api/boards/' + board._id, board);
       }
     };

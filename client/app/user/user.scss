@@ -4,7 +4,7 @@
 
 .board {
 	
-	.title, .description {
+	.title, .board-description, .link-description {
 		a {
 			color: black;
 		}
@@ -45,7 +45,11 @@
 		.no-padding {
 			padding: 0 !important;
 		}
-
+		
+		.editable-wrap, .editable-input {
+			width: 100%;
+			min-height: 150px;
+		}
 		
 	}
 }
