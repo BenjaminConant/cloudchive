@@ -37,6 +37,7 @@ angular.module('cloudchiveApp')
       
       Link.add(url, $scope.board._id).then(function(link){
         $scope.board.links.push(link.data);
+        $scope.user.links.push(link.data._id);
         $interval.cancel(stop);
         stop = undefined;
         $scope.newUrl.url = "" ;
