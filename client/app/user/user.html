@@ -31,8 +31,7 @@
 					</div>
 				</div>
 				<div class="v-space-10"></div>
-				<div class="row">	
-					
+				<div class="row links-grid">	
 					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 card-col">
 						<div class="container-fluid">
 							<div class="row">
@@ -47,6 +46,7 @@
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
 										<div class="text-center link-content image-container">
+											<h3>{{link.title}}</h3>
 											<img class="link-image" ng-if="!link.images.length"  ng-src="{{link.favicon}}">
 											<img class="link-image" ng-if="link.images.length" ng-repeat="image in link.images" ng-src="{{image.url}}">
 											<p class="lead link-description"><a href="#" editable-textarea="link.description" buttons="no" submit-on-enter="true" onaftersave="updateLink(link)">{{ link.description || "empty" }}</a></p>

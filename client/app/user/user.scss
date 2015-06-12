@@ -9,13 +9,17 @@
 			color: black;
 		}
 	}
-
+	
+	.links-grid {
+		background-color: whitesmoke;
+	}
 
 
 
 
 	.link {
 		box-shadow: 10px 10px 5px #888888;
+		background-color: white;
 		// overflow: auto;
 		border-radius: 2px;
 		height: 300px;
@@ -52,6 +56,7 @@
 		
 		.notes {
 			outline: 1px solid black;
+			background-color: white;
 			.notes-header {
 				border: 3px solid black;
 				padding: 2px 5px;

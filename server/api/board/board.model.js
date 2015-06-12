@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    deepPopulate = require('mongoose-deep-populate');
 
 var BoardSchema = new Schema({
   title: {type: String, default: "My New Board"},
@@ -13,5 +14,7 @@ var BoardSchema = new Schema({
   published: Boolean, 
   comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
+
+BoardSchema.plugin(deepPopulate);
 
 module.exports = mongoose.model('Board', BoardSchema);

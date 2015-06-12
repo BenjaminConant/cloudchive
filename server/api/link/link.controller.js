@@ -6,6 +6,7 @@ var _ = require('lodash');
 var Link = require('./link.model');
 var Board = require('../board/board.model');
 var request = require('request');
+var beagle = require('beagle');
 
 
 // Get list of links
@@ -27,11 +28,14 @@ exports.show = function(req, res) {
 
 // Creates a new link in the DB.
 exports.create = function(req, res) {
+  beagle.scrape(req.body.url, function(err, bone){
+    delete bone.body;
+    console.log("this is the bone!", bone);
+  });
 
   request('https://api.embed.ly/1/extract?key='+process.env.EMBEDLY_API_KEY+'&url=' + encodeURIComponent(req.body.url), function (err, response, body) {
     if (err) { return handleError(res, err); }
-    if (!err && response.statusCode == 200) {
-      console.log(JSON.parse(body)) 
+    if (!err && response.statusCode == 200) { 
       body = JSON.parse(body)
       if (body) {
         if (body.title) {req.body.title = body.title; }
@@ -47,7 +51,7 @@ exports.create = function(req, res) {
         if (body.keywords) {req.body.keywords = body.keywords; }
         if (body.entities) {req.body.entities = body.entities; }
         if (body.images) {req.body.images = body.images; }
-        if (body.provider_url) {req.body.title = body.provider_url; }
+        if (body.provider_url) {req.body.providerUrl = body.provider_url; }
 
         var smallColor = 750;
         var firstColor = {color:[0,0,0]}

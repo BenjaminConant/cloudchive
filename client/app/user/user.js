@@ -3,8 +3,8 @@
 angular.module('cloudchiveApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('user', {
-        url: '/user/:id',
+      .state('userBoard', {
+        url: '/user/board/:id',
         templateUrl: 'app/user/user.html',
         controller: 'UserCtrl'
       });

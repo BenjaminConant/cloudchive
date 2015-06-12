@@ -8,14 +8,16 @@ angular.module('cloudchiveApp')
       console.log(user.icon);
     });
 
+    Board.getOne($stateParams.id).then(function(res){
+      $scope.board = res.data;
+      console.log($scope.board);
+    })
+
     $scope.newUrl = {};
     $scope.newLinkComment = {};
     $scope.newBoardComment = {};
 
-    Board.getByUser($stateParams.id).then(function(boards){
-      $scope.board = boards.data[0];
-      console.log($scope.board);
-    })
+    
 
   	$scope.addLink = function () {
       var url = $scope.newUrl.url
@@ -41,11 +43,7 @@ angular.module('cloudchiveApp')
       })
   	}
 
-    $scope.createBoard = function() {
-      Board.create($stateParams.id, {}).then(function(board) {
-        $scope.board = board.data;
-      })
-    }
+    
 
     $scope.openLink = function (url) {
       $window.open(url);

@@ -15,11 +15,15 @@ exports.index = function(req, res) {
 
 // Get a single board
 exports.show = function(req, res) {
-  Board.findById(req.params.id, function (err, board) {
+  Board.findById(req.params.id)
+  .deepPopulate('links.comments.author comments authors')
+  .exec()
+  .then(function(board) {
+    res.json(200, board);
+  })
+  .then(null, function(err){
     if(err) { return handleError(res, err); }
-    if(!board) { return res.send(404); }
-    return res.json(board);
-  });
+  })
 };
 
 
