@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Comment = require('./comment.model');
+var Link = require('../link/link.model');
 
 // Get list of comments
 exports.index = function(req, res) {
@@ -22,10 +23,25 @@ exports.show = function(req, res) {
 
 // Creates a new comment in the DB.
 exports.create = function(req, res) {
-  Comment.create(req.body, function(err, comment) {
+  var savedComment;
+  Comment.create(req.body)
+  .then(function(comment){
+    savedComment = comment;
+    return Link.findById(comment.targetLink).exec();
+  })
+  .then(function(link){
+    link.comments.push(savedComment._id);
+    return link.save();
+  })
+  .then(function(link){
+    return Comment.findById(savedComment._id).populate('author').exec()
+  })
+  .then(function(comment){
+    res.json(200, comment);
+  })
+  .then(null, function(err){
     if(err) { return handleError(res, err); }
-    return res.json(201, comment);
-  });
+  })
 };
 
 // Updates an existing comment in the DB.
@@ -55,5 +71,6 @@ exports.destroy = function(req, res) {
 };
 
 function handleError(res, err) {
+  console.log(err);
   return res.send(500, err);
 }

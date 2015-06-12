@@ -1,9 +1,16 @@
 'use strict';
 
 angular.module('cloudchiveApp')
-  .controller('UserCtrl', function ($scope, $stateParams, Auth, Link, Board, $window, $interval) {
+  .controller('UserCtrl', function ($scope, $stateParams, Auth, Link, Board, Comment, $window, $interval, Helpers) {
   	
+    Auth.getCurrentUser().$promise.then(function(user){
+      $scope.user = user;
+      console.log(user.icon);
+    });
+
     $scope.newUrl = {};
+    $scope.newLinkComment = {};
+    $scope.newBoardComment = {};
 
     Board.getByUser($stateParams.id).then(function(boards){
       $scope.board = boards.data[0];
@@ -56,6 +63,22 @@ angular.module('cloudchiveApp')
       })
     }
 
+    $scope.createLinkComment = function (link) {
+      var comment = {
+        text: link.newComment,
+        author: $scope.user._id,
+        targetLink: link._id,
+      };
+      comment.targetAuthors = Helpers.grab($scope.board.authors, '_id');
+      Comment.createOnLink(comment).then(function(res){
+        console.log("this is the res", res);
+        delete link.newComment;
+        link.comments.push(res.data);
+      })
+    }
+
+
+  
     
  
 

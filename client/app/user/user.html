@@ -32,13 +32,7 @@
 				</div>
 				<div class="v-space-10"></div>
 				<div class="row">	
-					<div masonry>
-					    <div class="masonry-brick" ng-repeat="brick in bricks">
-					        <img ng-src="{{ brick.src }}" alt="A masonry brick">
-					    </div>
-					</div>
-
-
+					
 					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 card-col">
 						<div class="container-fluid">
 							<div class="row">
@@ -51,7 +45,6 @@
 											</h4>
 										</div>
 									</div>
-									
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
 										<div class="text-center link-content image-container">
 											<img class="link-image" ng-if="!link.images.length"  ng-src="{{link.favicon}}">
@@ -59,23 +52,38 @@
 											<p class="lead link-description"><a href="#" editable-textarea="link.description" buttons="no" submit-on-enter="true" onaftersave="updateLink(link)">{{ link.description || "empty" }}</a></p>
 										</div>
 									</div>
-										
-								
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+										<div class="notes">
+											<div class="notes-header">
+												Notes:
+											</div>
+											<form ng-submit="createLinkComment(link)">
+												<img ng-src="{{user.icon}}" class="comment-icon"><input type="text" class="note-input" placeholder="annotate :)" ng-model="link.newComment">
+											</form>
+											<div ng-if="link.comments.length" class="notes-list">
+												<div ng-repeat="comment in link.comments" class="clearfix">
+													<img ng-src="{{comment.author.icon}}" class="comment-icon pull-left">
+													<div class="pull-left">
+														<div class="note-author-name">{{comment.author.name}}</div>
+														<div class="note-text">{{comment.text}}</div>
+													</div>		
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						
-								
-							
-						</div>	
-					</div>
+						</div>
+					</div>	
+				</div>
 					
-					<div ng-if="!board.links.length" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 no-links">
-						<p class="text-center card-p">This board has no links yet ... add one! oneNo Links Yet :( ... Add one!</p>
-					</div>
-
+				<div ng-if="!board.links.length" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 no-links">
+					<p class="text-center card-p">This board has no links yet ... add one! oneNo Links Yet :( ... Add one!</p>
 				</div>
 
 			</div>
+
+		</div>
 		</div>
 	</div>
 </div>

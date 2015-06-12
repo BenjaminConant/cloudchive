@@ -36,7 +36,8 @@ User.find({}).remove(function() {
     provider: 'local',
     name: 'Test User',
     email: 'test@test.com',
-    password: 'test'
+    password: 'test',
+    icon: 'http://symbiont.io/wp-content/uploads/2015/04/Ben_clipped_rev_1.jpeg'
   }, {
     provider: 'local',
     role: 'admin',
