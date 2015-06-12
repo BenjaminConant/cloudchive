@@ -39,6 +39,13 @@ User.find({}).remove(function() {
     password: 'test',
     icon: 'http://symbiont.io/wp-content/uploads/2015/04/Ben_clipped_rev_1.jpeg'
   }, {
+    _id: '5577385930abc2aa4caa50ec',
+    provider: 'local',
+    name: 'Benjamin Conant',
+    email: 'ben@ben.com',
+    password: 'ben',
+    icon: 'http://symbiont.io/wp-content/uploads/2015/04/Ben_clipped_rev_1.jpeg'
+  }, {
     provider: 'local',
     role: 'admin',
     name: 'Admin',

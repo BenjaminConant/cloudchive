@@ -5,7 +5,7 @@ angular.module('cloudchiveApp')
   	
     Auth.getCurrentUser().$promise.then(function(user){
       $scope.user = user;
-      console.log(user.icon);
+      console.log($scope.user);
     });
 
     Board.getOne($stateParams.id).then(function(res){

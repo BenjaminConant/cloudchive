@@ -12,6 +12,7 @@ var UserSchema = new Schema({
   email: { type: String, lowercase: true },
   icon: String, 
   boards: [{type: Schema.Types.ObjectId, ref: 'Board'}],
+  links: [{type: Schema.Types.ObjectId, ref:'Link'}],
   role: {
     type: String,
     default: 'user'

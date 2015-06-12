@@ -5,6 +5,7 @@
 var _ = require('lodash');
 var Link = require('./link.model');
 var Board = require('../board/board.model');
+var User = require('../user/user.model');
 var request = require('request');
 var beagle = require('beagle');
 
@@ -23,6 +24,14 @@ exports.show = function(req, res) {
     if(err) { return handleError(res, err); }
     if(!link) { return res.send(404); }
     return res.json(link);
+  });
+};
+
+exports.getMany = function(req, res) {
+  Link.find({'_id': { $in: JSON.parse(req.params.ids)} }, function(err, links){
+      if(err) { return handleError(res, err); }
+      if(!links) { return res.send(404); }
+      return res.json(links);
   });
 };
 
@@ -80,6 +89,13 @@ exports.create = function(req, res) {
       return board.save()
     })
     .then(function(board){
+      return User.findById(req.user._id).exec()
+    })
+    .then(function(user){
+      user.links.push(newLink._id)
+      return user.save()
+    })
+    .then(function(user){
       res.json(200, newLink);
     })
     .then(null, function(err){
@@ -117,5 +133,6 @@ exports.destroy = function(req, res) {
 };
 
 function handleError(res, err) {
+  console.log(err);
   return res.send(500, err);
 }

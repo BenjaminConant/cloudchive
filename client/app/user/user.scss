@@ -3,7 +3,7 @@
 }
 
 .board {
-	
+	padding: 0px;
 	.title, .board-description, .link-description {
 		a {
 			color: black;
@@ -13,6 +13,8 @@
 	.links-grid {
 		background-color: whitesmoke;
 	}
+
+	
 
 
 
@@ -47,6 +49,9 @@
 			height: 266px;
 			overflow: scroll;
 			padding: 10px;
+			.link-title {
+				margin-top: 10px;
+			}
 			.link-image {
 				width: 40px;
 				height: 40px;
@@ -93,11 +98,13 @@
 		.no-padding {
 			padding: 0 !important;
 		}
-		
+
 		.editable-wrap, .editable-input {
 			width: 100%;
 			min-height: 150px;
 		}
+		
+		
 		
 	}
 }

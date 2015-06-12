@@ -3,8 +3,8 @@
 angular.module('cloudchiveApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'My Boards',
-      'link': '/user/myBoards'
+      'title': 'Home',
+      'link': '/home/boards'
     }];
 
     $scope.isCollapsed = true;

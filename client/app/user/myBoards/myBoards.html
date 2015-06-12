@@ -4,11 +4,23 @@
 	
 	<div class="row my-boards-title">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<h1 class="text-center">My Boards</h1>
+			<div class="text-center">
+				<img class="user-image" ng-src="{{user.icon}}" alt="">				
+			</div>
+			<h1 class="text-center">{{user.name}}</h1>
+			<ul class="nav nav-tabs text-center">
+			  <li role="presentation" class="active">
+			  		<a href="#">
+			  			<div>Boards</div>
+			  			<div>0 boards</div>
+			  		</a>
+			  	</li>
+			  <li role="presentation"><a href="#">Links</a></li>
+			</ul>
 		</div>
 	</div>
 	<div class="row my-boards-grid">
-		<div ng-if="!boards.length" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
+		<div ng-if="!boards.length" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 text-center">
 			<div class="add-board">
 				<h4>You have no boards yet ... :(</h4>
 				<div>

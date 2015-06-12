@@ -9,6 +9,10 @@ angular.module('cloudchiveApp')
       },
       update: function (link) {
         return $http.put('/api/links/' + link._id, link);
+      }, 
+      getMany: function (linkIds) {
+        var ids = JSON.stringify(linkIds);
+        return $http.get('/api/links/many/'+ids);
       }
     };
   });

@@ -1,5 +1,22 @@
 .my-boards-title {
+	font-family: 'Helvetica Neue', Helvetica, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', arial, sans-serif;
 	padding-bottom: 50px;
+
+	.nav-tabs > li, .nav-pills > li {
+	    float:none;
+	    display:inline-block;
+	    *display:inline; /* ie7 fix */
+	     zoom:1; /* hasLayout ie7 trigger */
+	}
+
+	.nav-tabs, .nav-pills {
+	    text-align:center;
+	}
+
+	.user-image {
+		height: 60px;
+		width: 60px;
+	}
 }
 .my-boards-grid {
 	background-color: whitesmoke;

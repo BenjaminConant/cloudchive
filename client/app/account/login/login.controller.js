@@ -16,7 +16,7 @@ angular.module('cloudchiveApp')
         .then( function(user) {
           Auth.getCurrentUser().$promise
           .then(function(user){
-              $location.path('/user/myBoards');
+              $location.path('/home');
           })
          
         })

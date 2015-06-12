@@ -32,7 +32,7 @@
 				</div>
 				<div class="v-space-10"></div>
 				<div class="row links-grid">	
-					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 card-col">
+					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-col">
 						<div class="container-fluid">
 							<div class="row">
 								<div class="link" style="border: 1px solid rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">
@@ -46,10 +46,10 @@
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
 										<div class="text-center link-content image-container">
-											<h3>{{link.title}}</h3>
 											<img class="link-image" ng-if="!link.images.length"  ng-src="{{link.favicon}}">
 											<img class="link-image" ng-if="link.images.length" ng-repeat="image in link.images" ng-src="{{image.url}}">
-											<p class="lead link-description"><a href="#" editable-textarea="link.description" buttons="no" submit-on-enter="true" onaftersave="updateLink(link)">{{ link.description || "empty" }}</a></p>
+											<h4 class="link-title text-left">{{link.title}}</h4>
+											<p class="link-description text-left"><a href="#" editable-textarea="link.description" buttons="no" submit-on-enter="true" onaftersave="updateLink(link)">{{ link.description || "empty" }}</a></p>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">

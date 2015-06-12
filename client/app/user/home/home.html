@@ -1,0 +1,40 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container-fluid">
+	
+	<div class="row my-boards-title">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="text-center">
+				<img class="user-image" ng-src="{{user.icon}}" alt="">				
+			</div>
+			<h1 class="text-center">{{user.name}}</h1>
+			<ul class="nav nav-tabs text-center">
+			  <li role="presentation" ui-sref-active="active">
+			  		<a ui-sref="home.boards">
+			  			<div>Boards</div>
+			  			<div>{{boards.length}} boards</div>
+			  		</a>
+			  	</li>
+			  <li role="presentation" ui-sref-active="active">
+			  	<a ui-sref="home.links">
+			  		<div>Links</div>
+			  		<div>{{user.links.length}} links</div>
+			  	</a>
+			</li>
+			</ul>
+		</div>
+	</div>
+	<div ui-view><div>
+	
+
+
+
+
+
+<footer class="footer">
+  <div class="container">
+      <p>Angular Fullstack v2.0.13 |
+        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+  </div>
+</footer>
