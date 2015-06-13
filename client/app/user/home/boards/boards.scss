@@ -1,0 +1,35 @@
+.my-boards-grid {
+	background-color: whitesmoke;
+	padding: 20px;
+	.board-card {
+		background-color: white;
+		height: 300px;
+		border: 1px solid black;
+		box-shadow: 10px 10px 5px #888888;
+		cursor: pointer;
+		.icon-container {
+			width: 80%;
+			margin: 0 auto;
+			.icon {
+				margin: 5px;
+				height: 32px;
+				width: 32px;
+			}
+		}
+		.board-description {
+			padding: 10px;
+			min-height: 120px;
+		}
+	}
+	.add-board {
+		height: 300px;
+		border: 5px dashed grey;
+
+		h4 {
+			padding-top: 80px;
+		}
+		button {
+			margin-top: 20px
+		}
+	}
+}

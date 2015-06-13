@@ -8,17 +8,15 @@
         <span class="icon-bar"></span>
       </button>
       <!-- <a href="/" class="navbar-brand">cloudchive</a> -->
-      <ul class="nav navbar-nav navbar-left">
-        <li ng-show="isLoggedIn()"><img ng-src="{{getCurrentUser().icon}}" style="height: 32px; width: 32px; margin-top: 9px"><li>
-        <li ng-show="isLoggedIn()"><p class="navbar-text">{{ getCurrentUser().name }}</p> </li>
-      </ul>
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li ui-sref-active="active">
+        <li ng-show="isLoggedIn()"><img ng-src="{{getCurrentUser().icon}}" style="height: 32px; width: 32px; margin-top: 9px"><li>
+        <li ng-show="isLoggedIn()"><a ui-sref="home.boards"> {{ getCurrentUser().name }}</a> </li>
+        <li ng-show="isLoggedIn()" ui-sref-active="active">
             <a ui-sref="home.boards">Boards ({{getCurrentUser().boards.length}})</a>
         </li>
-        <li ui-sref-active="active">
+        <li ng-show="isLoggedIn()"ui-sref-active="active">
             <a ui-sref="home.links">Links ({{getCurrentUser().links.length}})</a>
         </li>
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>

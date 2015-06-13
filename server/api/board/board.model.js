@@ -12,7 +12,8 @@ var BoardSchema = new Schema({
   lastEdit: Date,
   links: [{type: Schema.Types.ObjectId, ref: 'Link'}],
   published: Boolean, 
-  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
+  stars: {type: Number, default:0}
 });
 
 BoardSchema.plugin(deepPopulate);

@@ -7,8 +7,8 @@ angular.module('cloudchiveApp')
         var arrayOfProps = [];
         arrayOfObjects.forEach(function(obj){
           var p = obj[prop];
-          if (p) {arrayOfProps.push(p)}
-        })
+          if (p) {arrayOfProps.push(p);}
+        });
         return arrayOfProps;
       }
     };

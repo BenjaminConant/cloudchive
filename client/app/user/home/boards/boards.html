@@ -9,11 +9,16 @@
 	</div>
 	<div ng-if="boards.length" ng-repeat="board in boards" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
 		<div class="board-card" ng-click="goToBoard(board._id)">
-			<h4>{{board.title}}</h4>
-			<h4>{{board.description}}</h4>
+			<h2>{{board.title}}</h2>
 			<div class="icon-container text-center">
 				<img class="icon" ng-repeat="link in board.links " ng-src="{{link.favicon}}">
 			</div>
+			<p class="lead text-left board-description">{{board.description}}</p>
+			<ul class="list-inline">
+				<li>Links ({{board.links.length}})</li>
+				<li>Comments({{board.comments.length}})</li>
+				<li>Stars({{board.stars}})</li>
+			</ul>
 		</div>
 	</div>
 	<div ng-if="boards.length" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">

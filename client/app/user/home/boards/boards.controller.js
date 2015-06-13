@@ -8,19 +8,25 @@ angular.module('cloudchiveApp')
       return user;
     })
     .then(function(user){
-      Board.getByUser(user._id).then(function(res){
-          $scope.boards = res.data;
-          console.log($scope.boards);
-      })
+      return Board.getByUser(user._id);
     })
+    .then(function(res){
+        $scope.boards = res.data;
+        console.log($scope.boards);
+    })
+    .then(null, function(err){
+      if (err) {console.log(err);}
+    });
 
     $scope.createBoard = function() {
       Board.create($scope.user._id, {}).then(function(res) {
+        $scope.user.boards.push(res.data._id);
         $scope.goToBoard(res.data._id);
-      })
-    }
+      });
+    };
 
     $scope.goToBoard = function(id) {
-      $location.path('user/board/' + id)
-    }
+      $location.path('board/' + id);
+    };
+
   });

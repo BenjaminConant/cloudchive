@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: MyBoardsCtrl', function () {
+describe('Controller: BoardCtrl', function () {
 
   // load the controller's module
   beforeEach(module('cloudchiveApp'));
 
-  var MyBoardsCtrl, scope;
+  var BoardCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MyBoardsCtrl = $controller('MyBoardsCtrl', {
+    BoardCtrl = $controller('BoardCtrl', {
       $scope: scope
     });
   }));

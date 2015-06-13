@@ -1,7 +1,6 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container-fluid">
-	
 	<div class="row my-boards-title">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="text-center">
@@ -12,7 +11,7 @@
 			  <li role="presentation" ui-sref-active="active">
 			  		<a ui-sref="home.boards">
 			  			<div>Boards</div>
-			  			<div>{{boards.length}} boards</div>
+			  			<div>{{user.boards.length}} boards</div>
 			  		</a>
 			  	</li>
 			  <li role="presentation" ui-sref-active="active">
@@ -25,12 +24,8 @@
 		</div>
 	</div>
 	<div ui-view></div>
+</div>
 	
-
-
-
-
-
 <footer class="footer">
   <div class="container">
       <p>Angular Fullstack v2.0.13 |
