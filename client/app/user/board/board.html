@@ -35,12 +35,13 @@
 					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-col">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="link" style="border: 1px solid rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">
+								<div class="link" ng-mouseenter="link.showRemove = true" ng-mouseleave="link.showRemove = false" style="border: 1px solid rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 link-header no-padding">
 										<div class="link-top-bar">
 											<h4 ng-click="openLink(link.url)" style="color: white; background-color: rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">
 											<img class="link-favicon" style="" ng-src="{{link.favicon}}" alt="">
 											{{link.providerDisplay}}
+											<span ng-show="link.showRemove" ng-click="removeLink($index); $event.stopPropagation()" class="glyphicon glyphicon-remove pull-right remove-link"></span>
 											</h4>
 										</div>
 									</div>

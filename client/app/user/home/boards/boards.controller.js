@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('cloudchiveApp')
-  .controller('BoardsCtrl', function ($scope, Auth, Board, $location) {
+  .controller('BoardsCtrl', function ($scope, Auth, Board, $location, Helpers) {
     Auth.getCurrentUser().$promise
     .then(function(user){
       $scope.user = user;
+      console.log("user", $scope.user);
       return user;
     })
     .then(function(user){
@@ -12,7 +13,7 @@ angular.module('cloudchiveApp')
     })
     .then(function(res){
         $scope.boards = res.data;
-        console.log($scope.boards);
+        console.log("the boards", $scope.boards);
     })
     .then(null, function(err){
       if (err) {console.log(err);}
@@ -27,6 +28,14 @@ angular.module('cloudchiveApp')
 
     $scope.goToBoard = function(id) {
       $location.path('board/' + id);
+    };
+
+    $scope.removeBoard = function (boardId, idx) {
+      Board.remove(boardId).then(function(res){
+        console.log(res.data);
+        Helpers.removeMatch($scope.user.boards, boardId);
+        Helpers.removeOne($scope.boards, idx)
+      });
     };
 
   });

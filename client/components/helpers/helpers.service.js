@@ -10,6 +10,22 @@ angular.module('cloudchiveApp')
           if (p) {arrayOfProps.push(p);}
         });
         return arrayOfProps;
+      },
+      removeOne: function(array, idx) {
+          array.splice(idx, 1);
+      }, 
+      removeMatch: function(array, match) {
+        var removeIdx;
+        var remove = false;
+        array.forEach(function(elm, idx) {
+          console.log("elm", elm, "match", match);
+          if (elm === match) {
+            removeIdx = idx;
+            remove = true;
+            console.log("got to elm match case");
+          }
+        });
+        if (remove) {array.splice(removeIdx, 1);}
       }
     };
   });

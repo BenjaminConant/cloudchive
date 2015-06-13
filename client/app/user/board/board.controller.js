@@ -37,6 +37,7 @@ angular.module('cloudchiveApp')
       
       Link.add(url, $scope.board._id).then(function(link){
         $scope.board.links.push(link.data);
+        $scope.board.__v++;
         $scope.user.links.push(link.data._id);
         $interval.cancel(stop);
         stop = undefined;
@@ -51,6 +52,7 @@ angular.module('cloudchiveApp')
     };
 
     $scope.updateBoard = function () {
+      console.log("the board we send", $scope.board);
       Board.update($scope.board).then(function(res){
         console.log(res.data);
       });
@@ -76,7 +78,10 @@ angular.module('cloudchiveApp')
       });
     };
 
-
+    $scope.removeLink = function (index) {
+      Helpers.removeOne($scope.board.links, index)
+      $scope.updateBoard();
+    }
   
     
  

@@ -37,11 +37,6 @@ exports.getMany = function(req, res) {
 
 // Creates a new link in the DB.
 exports.create = function(req, res) {
-  beagle.scrape(req.body.url, function(err, bone){
-    delete bone.body;
-    console.log("this is the bone!", bone);
-  });
-
   request('https://api.embed.ly/1/extract?key='+process.env.EMBEDLY_API_KEY+'&url=' + encodeURIComponent(req.body.url), function (err, response, body) {
     if (err) { return handleError(res, err); }
     if (!err && response.statusCode == 200) { 
@@ -86,7 +81,9 @@ exports.create = function(req, res) {
     })
     .then(function(board){
       board.links.push(newLink._id);
-      return board.save()
+      board.markModified('links');
+      board.__v++;
+      return board.save();
     })
     .then(function(board){
       return User.findById(req.user._id).exec()

@@ -7,8 +7,9 @@
 			</div>
 		</div>
 	</div>
-	<div ng-if="boards.length" ng-repeat="board in boards" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
-		<div class="board-card" ng-click="goToBoard(board._id)">
+	<div ng-if="boards.length" ng-repeat="board in boards" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 text-center">
+		<div ng-mouseenter="board.showRemove = true" ng-mouseleave="board.showRemove = false" class="board-card" ng-click="goToBoard(board._id)">
+			<span ng-show="board.showRemove" ng-click="removeBoard(board._id, $index); $event.stopPropagation()" class="glyphicon glyphicon-remove pull-right remove-icon"></span>
 			<h2>{{board.title}}</h2>
 			<div class="icon-container text-center">
 				<img class="icon" ng-repeat="link in board.links " ng-src="{{link.favicon}}">
@@ -21,7 +22,7 @@
 			</ul>
 		</div>
 	</div>
-	<div ng-if="boards.length" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
+	<div ng-if="boards.length" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 text-center">
 		<div class="add-board">
 			<h4></h4>
 			<div>

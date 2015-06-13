@@ -20,13 +20,16 @@
 			.link-top-bar {
 				padding: 0;
 				height:overflow;
+				.remove-link {
+					padding-top: 5px;
+					padding-right: 5px;
+				}
 			}
 			.link-favicon {
 				height:32px;
 				width: 32px;
 				background-color: Gainsboro; 
 			}
-
 			h4 {
 				margin-top: 0;
 				margin-bottom: 0;

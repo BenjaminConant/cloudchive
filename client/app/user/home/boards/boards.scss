@@ -7,9 +7,13 @@
 		border: 1px solid black;
 		box-shadow: 10px 10px 5px #888888;
 		cursor: pointer;
+		.remove-icon {
+			font-size: 20px;
+		}
 		.icon-container {
 			width: 80%;
 			margin: 0 auto;
+			min-height:42px;
 			.icon {
 				margin: 5px;
 				height: 32px;
