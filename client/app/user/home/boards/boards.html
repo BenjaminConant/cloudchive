@@ -7,16 +7,18 @@
 			</div>
 		</div>
 	</div>
-	<div ng-if="boards.length" ng-repeat="board in boards" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 text-center">
-		<div ng-mouseenter="board.showRemove = true" ng-mouseleave="board.showRemove = false" class="board-card" ng-click="goToBoard(board._id)">
-			<span ng-show="board.showRemove" ng-click="removeBoard(board._id, $index); $event.stopPropagation()" class="glyphicon glyphicon-remove pull-right remove-icon"></span>
-			<h2 class="title">{{board.title}}</h2>
-			<p class="lead board-description">{{board.description}}</p>
-			<ul class="list-inline">
-				<li>Links ({{board.links.length}})</li>
-				<li>Comments({{board.comments.length}})</li>
-				<li>Stars({{board.stars}})</li>
-			</ul>
+	<div ng-repeat="col in cols">
+		<div ng-if="boards.length" ng-repeat="board in col" class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+			<div ng-mouseenter="board.showRemove = true" ng-mouseleave="board.showRemove = false" class="board-card" ng-click="goToBoard(board._id)">
+				<span ng-show="board.showRemove" ng-click="removeBoard(board._id, $index); $event.stopPropagation()" class="glyphicon glyphicon-remove pull-right remove-icon"></span>
+				<h2 class="title">{{board.title}}</h2>
+				<p class="lead board-description text-left">{{board.description}}</p>
+				<ul class="list-inline text-center">
+					<li>Links ({{board.links.length}})</li>
+					<li>Comments({{board.comments.length}})</li>
+					<li>Stars({{board.stars}})</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div ng-if="boards.length" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 text-center">

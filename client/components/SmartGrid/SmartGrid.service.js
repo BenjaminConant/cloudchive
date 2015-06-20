@@ -6,12 +6,12 @@ angular.module('cloudchiveApp')
     return {
       make: function (itemsArray) {
         var grid = [];
-        var counter = 1
+        var counter = 0
         itemsArray.forEach(function(item, index){
           if (!grid[counter]) {grid[counter] =[]};
           grid[counter].push(item);
-          if (counter === 4) {
-              counter = 1;
+          if (counter === 3) {
+              counter = 0;
           } else {
               counter++;
           }
@@ -20,20 +20,19 @@ angular.module('cloudchiveApp')
       },
       add: function (grid, item) {
         
-
-
+        if (!grid[0]) {grid[0] = [item]; return;}
+        console.log("funciton called");
         
         var lastLength = 0;
-        var counter = 1;
-        console.log("funciton called");
-        for (var i = 0; i < grid.length; i++) { 
+        var counter = 0;
+        for (var i = 0; i <= grid.length; i++) { 
           console.log("looping", counter);
           if (!grid[counter]) {
             console.log("in here");
             grid[counter] = [item];
             return;
           }
-          if (counter === 4 ) {
+          if (counter === 3 ) {
             console.log("ll from 4", lastLength)
             if (lastLength !== grid[counter].length) {
               console.log("in here");
@@ -41,11 +40,11 @@ angular.module('cloudchiveApp')
               return;
             } else {
               console.log("in here");
-              grid['1'].push(item);
+              grid[0].push(item);
               return;
             } 
            }
-          if (counter === 1) {
+          if (counter === 0) {
             console.log("in here");
             lastLength = grid[counter].length
             counter++;
@@ -60,7 +59,11 @@ angular.module('cloudchiveApp')
               counter++;
             }
           }
+          console.log("at the end of loop counter", counter, "lastLength", lastLength);
         }
+
+
+
       },
 
       remove: function () {

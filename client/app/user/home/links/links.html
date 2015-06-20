@@ -2,8 +2,8 @@
 	<div style="padding:0px;" class="container-fluid">
 		<div class="row links-grid">
 			<div class="container-fluid">
-				<div ng-if="links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					<div ng-repeat="link in cols['1']" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
+				<div ng-repeat="col in cols" ng-if="links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<div ng-repeat="link in col" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
 						<span ng-show="link.showActions" class="pull-right actions">
 						   	<span class="glyphicon glyphicon-remove"></span>
 						</span>
@@ -34,103 +34,7 @@
 						</div>
 					</div>
 				</div>
-				<div ng-if="links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					<div ng-repeat="link in cols['2']" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
-						<span ng-show="link.showActions" class="pull-right actions">
-						   	<span class="glyphicon glyphicon-remove"></span>
-						</span>
-						<img ng-src="{{link.favicon}}" class="favicon">
-						<span class="provider">{{link.providerName.split(' ')[0] | limitTo : 20 }}</span>
-						<p class="description"><a href="#" editable-textarea="link.description" buttons="no" submit-on-enter="true" onaftersave="updateLink(link)">{{ link.description || "no description provided :( .. click to add one!" }}</a></p>
-						<div class="write-comment">
-							<form ng-submit="createLinkComment(link)">
-								<img ng-src="{{user.icon}}" class="icon"><input type="text" class="note-input" placeholder="Write a comment ..." ng-model="link.newComment">
-							</form>
-						</div>
-						<div ng-if="!link.comments.length" class="no-comments">
-							<p class="text-center"> no comments yet </p>
-						</div>
-						<div ng-repeat="comment in link.comments" ng-if="link.comments.length" class="comment">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 icon-col">
-										<img ng-src="{{comment.author.icon}}" class="icon">
-									</div>
-									<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-col">
-										<span class="author">{{comment.author.name}}</span>
-										<span class="date-created">{{comment.createdOn | date:'medium'}}</span>
-										<span class="text">{{comment.text}}</span>
-									</div>		
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div ng-if="links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					<div ng-repeat="link in cols['3']" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
-						<span ng-show="link.showActions" class="pull-right actions">
-						   	<span class="glyphicon glyphicon-remove"></span>
-						</span>
-						<img ng-src="{{link.favicon}}" class="favicon">
-						<span class="provider">{{link.providerName.split(' ')[0] | limitTo : 20 }}</span>
-						<p class="description"><a href="#" editable-textarea="link.description" buttons="no" submit-on-enter="true" onaftersave="updateLink(link)">{{ link.description || "no description provided :( .. click to add one!" }}</a></p>
-						<div class="write-comment">
-							<form ng-submit="createLinkComment(link)">
-								<img ng-src="{{user.icon}}" class="icon"><input type="text" class="note-input" placeholder="Write a comment ..." ng-model="link.newComment">
-							</form>
-						</div>
-						<div ng-if="!link.comments.length" class="no-comments">
-							<p class="text-center"> no comments yet </p>
-						</div>
-						<div ng-repeat="comment in link.comments" ng-if="link.comments.length" class="comment">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 icon-col">
-										<img ng-src="{{comment.author.icon}}" class="icon">
-									</div>
-									<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-col">
-										<span class="author">{{comment.author.name}}</span>
-										<span class="date-created">{{comment.createdOn | date:'medium'}}</span>
-										<span class="text">{{comment.text}}</span>
-									</div>		
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div ng-if="links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					<div ng-repeat="link in cols['4']" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
-						<span ng-show="link.showActions" class="pull-right actions">
-						   	<span class="glyphicon glyphicon-remove"></span>
-						</span>
-						<img ng-src="{{link.favicon}}" class="favicon">
-						<span class="provider">{{link.providerName.split(' ')[0] | limitTo : 20 }}</span>
-						<p class="description"><a href="#" editable-textarea="link.description" buttons="no" submit-on-enter="true" onaftersave="updateLink(link)">{{ link.description || "no description provided :( .. click to add one!" }}</a></p>
-						<div class="write-comment">
-							<form ng-submit="createLinkComment(link)">
-								<img ng-src="{{user.icon}}" class="icon"><input type="text" class="note-input" placeholder="Write a comment ..." ng-model="link.newComment">
-							</form>
-						</div>
-						<div ng-if="!link.comments.length" class="no-comments">
-							<p class="text-center"> no comments yet </p>
-						</div>
-						<div ng-repeat="comment in link.comments" ng-if="link.comments.length" class="comment">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 icon-col">
-										<img ng-src="{{comment.author.icon}}" class="icon">
-									</div>
-									<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-col">
-										<span class="author">{{comment.author.name}}</span>
-										<span class="date-created">{{comment.createdOn | date:"medium"}}</span>
-										<span class="text">{{comment.text}}</span>
-									</div>		
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-			</div>
+			<div>
 		</div>
 	</div>
 </div>
