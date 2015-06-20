@@ -5,11 +5,8 @@
 		background-color: white;
 		height: 300px;
 		border: 1px solid black;
-		box-shadow: 10px 10px 5px #888888;
+		border-radius: 5px;
 		cursor: pointer;
-		.remove-icon {
-			font-size: 20px;
-		}
 		.icon-container {
 			width: 80%;
 			margin: 0 auto;
@@ -20,14 +17,20 @@
 				width: 32px;
 			}
 		}
+		.remove-icon {
+				font-size: 20px;
+		}
+		.title {
+			margin-top: 80px;
+		}
 		.board-description {
 			padding: 10px;
-			min-height: 120px;
 		}
 	}
 	.add-board {
 		height: 300px;
-		border: 5px dashed grey;
+		border: 1px dashed grey;
+		border-radius: 5px;
 
 		h4 {
 			padding-top: 80px;

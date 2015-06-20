@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('cloudchiveApp')
-  .controller('LinksCtrl', function ($scope, Auth, Link) {
+  .controller('LinksCtrl', function ($scope, Auth, Link, SmartGrid) {
+    $scope.cols = {};
     Auth.getCurrentUser().$promise
     .then(function(user){
 		$scope.user = user;
@@ -9,6 +10,7 @@ angular.module('cloudchiveApp')
     })
     .then(function(res){
 		$scope.links = res.data;
+		$scope.cols = SmartGrid.make($scope.links);
 		console.log($scope.links);
 		return $scope.links;
 	})
