@@ -21,8 +21,8 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<h1 class="text-center title"><a href="#" editable-text="board.title" buttons="no" onaftersave="updateBoard()">{{ board.title || "empty" }}</a></h1>
-						<h2 class="text-center lead board-description"><a href="#" editable-textarea="board.description" buttons="no" submit-on-enter="true" onaftersave="updateBoard()"><em>{{ board.description || "empty" }}</em></a></h2>
+						<h1 class="text-center title"><a href="#" editable-text="board.title" buttons="no" onaftersave="updateBoardMeta()">{{ board.title || "empty" }}</a></h1>
+						<h2 class="text-center lead board-description"><a href="#" editable-textarea="board.description" buttons="no" submit-on-enter="true" onaftersave="updateBoardMeta()"><em>{{ board.description || "empty" }}</em></a></h2>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col lg-12 text-center">
 						<form ng-submit="addLink()">

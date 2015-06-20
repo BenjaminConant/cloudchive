@@ -10,6 +10,7 @@ router.get('/', controller.index);
 router.get('/getbyuser/:userId', auth.isAuthenticated(), controller.getByUser)
 router.get('/:id', controller.show);
 router.post('/', auth.isAuthenticated(), controller.create);
+router.put('/meta/:id', controller.updateMeta);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', auth.isAuthenticated(), controller.destroy);

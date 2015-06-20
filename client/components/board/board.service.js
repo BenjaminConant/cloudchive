@@ -19,6 +19,9 @@ angular.module('cloudchiveApp')
       }, 
       remove: function (boardId) {
         return $http.delete('api/boards/' + boardId);
+      }, 
+      updateMeta: function (obj) {
+        return $http.put('api/boards/meta/' + obj.id, obj);
       }
     };
   });

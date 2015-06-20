@@ -64,6 +64,13 @@ angular.module('cloudchiveApp')
       });
     };
 
+    $scope.updateBoardMeta = function () {
+      Board.updateMeta({id: $scope.board._id, title: $scope.board.title, description: $scope.board.description}).then(function(res){
+        $scope.board.title = res.data.title;
+        $scope.board.description = res.data.description;
+      })
+    }
+
     $scope.updateLink = function (link) {
       Link.update(link).then(function(res){
         console.log(res.data);

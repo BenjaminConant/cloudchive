@@ -79,6 +79,22 @@ exports.update = function(req, res) {
   });
 };
 
+exports.updateMeta = function (req, res) {
+  Board.findById(req.params.id, function(err, board){
+    if (err) { return handleError(res, err); }
+    if(!board) { return res.send(404); }
+    console.log("req.body", req.body);
+    board.title = req.body.title;
+    board.description = req.body.description;
+    console.log("board", board);
+    board.save(function(err){
+      console.log("board", board);
+      if (err) { return handleError(res, err); }
+      return res.json(200, {title: board.title, description: board.description});
+    });
+  });
+}
+
 // Deletes a board from the DB.
 exports.destroy = function(req, res) {
   Board.findById(req.params.id).exec()
