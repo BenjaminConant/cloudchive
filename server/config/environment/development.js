@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/cloudchive-dev'
   },
 
-  seedDB: true
+  seedDB: false,
 };
