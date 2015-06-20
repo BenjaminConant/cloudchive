@@ -75,6 +75,7 @@ angular.module('cloudchiveApp')
         text: link.newComment,
         author: $scope.user._id,
         targetLink: link._id,
+        createdOn: Date.now()
       };
       comment.targetAuthors = Helpers.grab($scope.board.authors, '_id');
       Comment.createOnLink(comment).then(function(res){
