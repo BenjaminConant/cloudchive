@@ -31,8 +31,72 @@
 					</div>
 				</div>
 				<div class="v-space-10"></div>
-				<div class="row links-grid">	
-					<div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-col">
+				<div class="row links-grid">
+					<div class="container-fluid">
+						<div ng-if="board.links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div ng-repeat="link in cols['1']" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
+								<span ng-show="link.showActions" class="pull-right actions">
+								   	<span class="glyphicon glyphicon-remove"></span>
+								</span>
+								<img ng-src="{{link.favicon}}" class="favicon">
+								<span class="provider">{{link.providerName.split(' ')[0] | limitTo : 20 }}</span>
+								<p class="description" ng-bind-html="link.description"></p>
+							</div>
+						</div>
+						<div ng-if="board.links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div ng-repeat="link in cols['2']" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
+								<span ng-show="link.showActions" class="pull-right actions">
+								   	<span class="glyphicon glyphicon-remove"></span>
+								</span>
+								<img ng-src="{{link.favicon}}" class="favicon">
+								<span class="provider">{{link.providerName.split(' ')[0] | limitTo : 20 }}</span>
+								<p class="description" ng-bind-html="link.description"></p>
+							</div>
+						</div>
+						<div ng-if="board.links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div ng-repeat="link in cols['3']" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
+								<span ng-show="link.showActions" class="pull-right actions">
+								   	<span class="glyphicon glyphicon-remove"></span>
+								</span>
+								<img ng-src="{{link.favicon}}" class="favicon">
+								<span class="provider">{{link.providerName.split(' ')[0] | limitTo : 20 }}</span>
+								<p class="description" ng-bind-html="link.description"></p>
+							</div>
+						</div>
+						<div ng-if="board.links.length" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div ng-repeat="link in cols['4']" class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
+								<span ng-show="link.showActions" class="pull-right actions">
+								   	<span class="glyphicon glyphicon-remove"></span>
+								</span>
+								<img ng-src="{{link.favicon}}" class="favicon">
+								<span class="provider">{{link.providerName.split(' ')[0] | limitTo : 20 }}</span>
+								<p class="description" ng-bind-html="link.description"></p>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- <div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-col">
+						
+						<div class="my-link" ng-mouseenter="link.showActions = true" ng-mouseleave="link.showActions = false" >
+							<span ng-show="link.showActions" class="pull-right actions">
+							   	<span class="glyphicon glyphicon-remove"></span>
+							</span>
+							<img ng-src="{{link.favicon}}" class="favicon">
+							<span class="provider">{{link.providerName.split(' ')[0] | limitTo : 20 }}</span>
+							<p class="description" ng-bind-html="link.description"></p>
+						</div>
+
+
+					</div> -->
+
+
+
+
+
+
+					
+					<!-- <div ng-if="board.links.length" ng-repeat="link in board.links" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-col">
 						<div class="container-fluid">
 							<div class="row">
 								<div class="link" ng-mouseenter="link.showRemove = true" ng-mouseleave="link.showRemove = false" style="border: 1px solid rgb({{link.faviconColors[0].color[0]}},{{link.faviconColors[0].color[1]}},{{link.faviconColors[0].color[2]}})">
@@ -75,7 +139,8 @@
 								</div>
 							</div>
 						</div>
-					</div>	
+					</div> -->
+
 				</div>
 					
 				<div ng-if="!board.links.length" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 no-links">

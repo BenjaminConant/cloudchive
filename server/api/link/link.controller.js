@@ -59,7 +59,8 @@ exports.create = function(req, res) {
 
         var smallColor = 750;
         var firstColor = {color:[0,0,0]}
-        req.body.faviconColors.forEach(function(elem){
+        if (req.body.faviconColors) {
+          req.body.faviconColors.forEach(function(elem){
           var color = elem.color[0] + elem.color[1] +elem.color[2];
           if (color <= smallColor && color > 10) {
             smallColor = elem.color[0] + elem.color[1] +elem.color[2];
@@ -67,6 +68,8 @@ exports.create = function(req, res) {
           }
         });
         req.body.faviconColors.unshift(firstColor);
+        }
+        
       }
     }
     

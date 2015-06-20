@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('cloudchiveApp')
-  .controller('BoardCtrl', function ($scope, $stateParams, Auth, Link, Board, Comment, $window, $interval, Helpers) {
+  .controller('BoardCtrl', function ($scope, $stateParams, Auth, Link, Board, Comment, $window, $interval, Helpers, SmartGrid) {
   	
+    $scope.cols = {};
+
     Auth.getCurrentUser().$promise.then(function(user){
       $scope.user = user;
       console.log($scope.user);
@@ -10,7 +12,8 @@ angular.module('cloudchiveApp')
 
     Board.getOne($stateParams.id).then(function(res){
       $scope.board = res.data;
-      console.log($scope.board);
+      $scope.cols = SmartGrid.make($scope.board.links);
+      console.log($scope.cols);
     });
 
     $scope.newUrl = {};
@@ -36,6 +39,9 @@ angular.module('cloudchiveApp')
 
       
       Link.add(url, $scope.board._id).then(function(link){
+        SmartGrid.add($scope.cols, link.data);
+        console.log($scope.cols);
+
         $scope.board.links.push(link.data);
         $scope.board.__v++;
         $scope.user.links.push(link.data._id);
