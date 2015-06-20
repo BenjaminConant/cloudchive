@@ -31,7 +31,87 @@
 
 	.description {
 		margin-top: 0.5em;
+		a {
+			color: black
+		}
 
+		a:hover {
+			color: #428bca;
+		}
+	}
+
+	.write-comment {
+		background-color: whitesmoke;
+		.icon {
+			width: 30px;
+			height: 30px;
+			margin: 5px	
+		}
+
+		input {
+			margin-left: 2px;
+			width: 80%;
+			border: 1px solid #dcdee3;
+			padding: 5px;
+		}
+
+		input:focus {
+			outline:none;
+		}
+
+		input:focus::-webkit-input-placeholder {
+		    color: #C4C4C4;
+		}
+
+		input:focus:-moz-placeholder {
+		    color: #C4C4C4;
+		}
+
+		input:focus::-moz-placeholder {
+		    color: #C4C4C4;
+		}
+
+		input:focus:-ms-input-placeholder {
+		    color: #C4C4C4;
+		}
+	}
+	.no-comments {
+		
+		background-color: whitesmoke;
+		p {
+			margin-top: 2px;
+			margin-bottom: 0px;
+			font-style: italic;
+			font-weight: 200;
+		}
+		
+	}
+
+	.comment {
+		background-color: whitesmoke;
+		margin-top: 2px;
+		.icon-col {
+			padding-left: 0;
+			.icon {
+				width: 30px;
+				height: 30px;
+				margin: 5px;	
+			}
+		}
+		.text-col {
+			padding-left: 0;
+			.author {
+				font-weight: bold;
+			}
+			.date-created {
+				display: block;
+				font-size: 10px;
+			}
+			.text {
+				display: block;
+			}
+		}
+		
 	}
 }
 
