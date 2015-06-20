@@ -14,6 +14,7 @@ angular.module('cloudchiveApp')
       $scope.board = res.data;
       $scope.cols = SmartGrid.make($scope.board.links);
       console.log($scope.cols);
+      console.log($scope.board);
     });
 
     $scope.newUrl = {};

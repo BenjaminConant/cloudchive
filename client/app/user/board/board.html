@@ -24,7 +24,11 @@
 						<h1 class="text-center title"><a href="#" editable-text="board.title" buttons="no" onaftersave="updateBoardMeta()">{{ board.title || "empty" }}</a></h1>
 						<h2 class="text-center lead board-description"><a href="#" editable-textarea="board.description" buttons="no" submit-on-enter="true" onaftersave="updateBoardMeta()"><em>{{ board.description || "empty" }}</em></a></h2>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col lg-12 text-center">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center col-byline">
+						<img ng-src="{{board.authors[0].icon}}" alt="" class="image">
+						<p>by <strong>{{board.authors[0].name}}</strong></p>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 						<form ng-submit="addLink()">
 							<input type="text" placeholder="paste link here" ng-model="newUrl.url">
 						</form>
